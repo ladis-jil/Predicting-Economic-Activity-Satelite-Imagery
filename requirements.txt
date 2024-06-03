@@ -1,3 +1,11 @@
 numpy
 pandas
 matplotlib
+seaborn
+#rasterio
+#geoio
+scikit-learn
+tensorflow
+geopandas
+tqdm
+pillow
