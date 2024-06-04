@@ -12,4 +12,3 @@ pillow
 folium
 scikit-image
 opencv-python
-os
