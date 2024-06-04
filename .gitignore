@@ -119,4 +119,3 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-raw_data/
