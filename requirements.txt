@@ -1,8 +1,11 @@
 numpy
 pandas
-requests
-scikit-learn
-Pillow==6.2.1
 matplotlib
+seaborn
+#rasterio
+#geoio
+scikit-learn
+tensorflow
+geopandas
 tqdm
-folium
+pillow
