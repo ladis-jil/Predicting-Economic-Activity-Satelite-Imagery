@@ -10,5 +10,5 @@ geopandas
 tqdm
 pillow
 folium
-scikit-image
 opencv-python
+scikit-image
