@@ -11,5 +11,5 @@ tqdm
 pillow
 folium
 skimage
-cv2
-os
+opencv-python
+
