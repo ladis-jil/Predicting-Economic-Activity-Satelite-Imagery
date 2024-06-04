@@ -2,7 +2,7 @@ numpy
 pandas
 matplotlib
 seaborn
-#rasterio
+rasterio
 #geoio
 scikit-learn
 tensorflow
