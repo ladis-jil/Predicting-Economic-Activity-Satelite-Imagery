@@ -2,11 +2,14 @@ numpy
 pandas
 matplotlib
 seaborn
-#rasterio
+rasterio
 #geoio
 scikit-learn
 tensorflow
 geopandas
 tqdm
 pillow
-
+folium
+skimage
+cv2
+os
