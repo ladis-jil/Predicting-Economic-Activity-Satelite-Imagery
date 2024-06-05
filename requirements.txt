@@ -3,7 +3,10 @@ pandas
 matplotlib
 seaborn
 rasterio
+<<<<<<< HEAD
 #geoio
+=======
+>>>>>>> 21615fdb59c0438d5210dfbeda48e9d33d561089
 scikit-learn
 tensorflow
 geopandas
