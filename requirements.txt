@@ -3,9 +3,12 @@ pandas
 matplotlib
 seaborn
 rasterio
+#geoio
 scikit-learn
 tensorflow
 geopandas
 tqdm
 pillow
-
+folium
+scikit-image
+opencv-python
