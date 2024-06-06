@@ -34,12 +34,12 @@ def load_model():
 
     return model
 
-# def main():
-#     # open a file .npz with the data
-#     data = np.load('data.npz')
-#     print(data)
+def main():
+    # open a file .npz with the data
+    data = np.load('data.npz')
+    print(data)
 
-#     model = load_model()
-#     model.fit(X_train, y_train, epochs=30, batch_size=16, validation_split=0.2, callbacks=[EarlyStopping(patience=5)])
+    model = load_model()
+    model.fit(X_train, y_train, epochs=30, batch_size=16, validation_split=0.2, callbacks=[EarlyStopping(patience=5)])
     
 
