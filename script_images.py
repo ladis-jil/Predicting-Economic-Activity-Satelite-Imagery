@@ -115,13 +115,16 @@ def main():
     X = []
     # take the first 200 rows of df_download
     # df_download = df_download[:300]
-    
     for i, row in df_download.iterrows():
         lat = row['image_lat']
         lon = row['image_lon']
-        img = client.download_image(lat, lon, 2015, 1, 2016, 12)
+        try:
+            img = client.download_image(lat, lon, 2015, 1, 2016, 12)
+        except:
+            print("error, pass")
         if img is not None:
             X.append(img[..., :3])  
+            print("image added")
             
     X = np.array(X)
     np.savez('image_matrix.npz',*X)
@@ -184,9 +187,6 @@ def add_nightlights(df, tif_array, transform):
         cluster_nightlights.append(tif_array[yminPixel:ymaxPixel,xminPixel:xmaxPixel].mean())
         
     df['nightlights'] = cluster_nightlights
-    
-
-
 
 def generate_download_locations(df, ipc=50):
     '''
