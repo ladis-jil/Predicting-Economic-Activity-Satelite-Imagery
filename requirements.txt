@@ -9,4 +9,6 @@ tensorflow
 geopandas
 tqdm
 pillow
-
+folium
+scikit-image
+opencv-python
