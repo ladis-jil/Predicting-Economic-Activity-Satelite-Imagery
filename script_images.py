@@ -115,6 +115,8 @@ def main():
     X = []
     # take the first 200 rows of df_download
     # df_download = df_download[:300]
+    df_download = df_download[0:2000]
+    size = len(df_download)
     for i, row in df_download.iterrows():
         lat = row['image_lat']
         lon = row['image_lon']
@@ -122,10 +124,9 @@ def main():
             img = client.download_image(lat, lon, 2015, 1, 2016, 12)
             if img is not None:
                 X.append(img[..., :3])  
-                print("image added")
+                print(f"{str(i)}/{str(size)}")
         except:
             print("error, pass")
-
             
     X = np.array(X)
     np.savez('image_matrix.npz',*X)
