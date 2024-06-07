@@ -2,6 +2,10 @@ raw_data/
 # mine
 *.csv
 *.dta
+<<<<<<< HEAD
+=======
+*.npy
+>>>>>>> bccce2d391ff66b24d3acf0d8f713702d7688cc4
 *.npz
 *.txt
 *.pt
