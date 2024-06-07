@@ -120,11 +120,12 @@ def main():
         lon = row['image_lon']
         try:
             img = client.download_image(lat, lon, 2015, 1, 2016, 12)
+            if img is not None:
+                X.append(img[..., :3])  
+                print("image added")
         except:
             print("error, pass")
-        if img is not None:
-            X.append(img[..., :3])  
-            print("image added")
+
             
     X = np.array(X)
     np.savez('image_matrix.npz',*X)
