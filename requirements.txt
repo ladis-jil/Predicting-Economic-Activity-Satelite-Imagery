@@ -3,6 +3,7 @@ pandas
 matplotlib
 seaborn
 rasterio
+gdal
 #geoio
 scikit-learn
 tensorflow
@@ -13,3 +14,6 @@ folium
 scikit-image
 opencv-python
 python-dotenv
+fastapi
+uvicorn
+requests
