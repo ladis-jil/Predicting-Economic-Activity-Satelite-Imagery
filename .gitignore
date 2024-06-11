@@ -10,7 +10,7 @@ raw_data/
 *.caffemodel
 *.DS_Store
 
-
+download_preprocess/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
