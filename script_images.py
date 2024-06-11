@@ -9,6 +9,7 @@ from utils import PlanetDownloader
 import matplotlib.pyplot as plt
 import os
 from dotenv import load_dotenv
+import h5py
 
 load_dotenv()
 PLANET_API_KEY= os.getenv('PLANET_API_KEY')
@@ -118,26 +119,41 @@ def main():
     create_nightlights_bin(df_download, cutoffs=[label0_max, label1_max, label2_max])
 
     client = PlanetDownloader(PLANET_API_KEY)
-    X = []
-    # take the first 200 rows of df_download
-    # df_download = df_download[:300]
-    df_download = df_download[0:2000]
-    size = len(df_download)
+    
+    with h5py.File('image_matrix.hdf5', 'w') as f:
+    # Inicializar el dataset dentro del archivo HDF5
+    # Asumimos un máximo estimado de imágenes; ajusta según sea necesario
+    max_images = len(df_download)
+    images_dset = f.create_dataset('images', (max_images, img_height, img_width, channels), dtype='uint8')
+    error_index = []
+
+    print(f"Ready for download {max_images} images")
+    count = 0  # Contador para saber cuántas imágenes válidas hemos guardado
+
     for i, row in df_download.iterrows():
         lat = row['image_lat']
         lon = row['image_lon']
         try:
             img = client.download_image(lat, lon, 2015, 1, 2016, 12)
             if img is not None:
-                X.append(img[..., :3])
-                print(f"{str(i)}/{str(size)}")
-        except:
-            print("error, pass")
+                # Asumimos que img ya está correctamente formateada como un numpy array de dtype 'uint8'
+                images_dset[count] = img[..., :3]  # Guardar la imagen en el dataset
+                count += 1
+                print(f"{str(i+1)}/{str(max_images)}")
+        except Exception as e:
+            error_index.append(i)
+            print(f"error at index {i}, pass: {str(e)}")
 
-    X = np.array(X)
-    np.savez('image_matrix.npz',*X)
+    # Si no todas las imágenes son válidas, puedes redimensionar el dataset para que solo tenga las imágenes válidas
+    if count < max_images:
+        images_dset.resize((count, img_height, img_width, channels))
 
-    return X
+    # Guardar índices de error si hay algunos
+    if error_index:
+        error_np = np.array(error_index)
+        np.save('error_indexes.npy', error_np)
+
+    print(f"Successfully downloaded and saved {count} images.")
 
 def create_nightlights_bin(df, cutoffs):
     assert len(cutoffs) >= 2, print('need at least 2 bins')

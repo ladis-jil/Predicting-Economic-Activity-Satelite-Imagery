@@ -23,7 +23,7 @@ class PlanetDownloader:
         coords = [tilexy_to_deg(xtile, ytile, zoom, a, b) for a,b in [(0,0), (0,255), (255,255), (255,0)]]
         return [[b,a] for a,b in coords]
     
-    def download_image(self, lat, lon, min_year, min_month, max_year, max_month, zoom=14, cloud_max=0.05):
+    def download_image(self, lat, lon, min_year, min_month, max_year, max_month, zoom=16, cloud_max=0.05):
         '''
         Use this method to download an image at a lat, lon in some time range
         If multiple images are available, the latest is downloaded
