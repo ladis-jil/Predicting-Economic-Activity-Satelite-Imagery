@@ -32,7 +32,7 @@ def main():
     # Usar CPU para el procesamiento
     # tf.config.set_visible_devices([], 'GPU')
     
-    images = np.load("preprocessed_images.npy")
+    images = np.load("../preprocessed_images.npy")
     print("Loaded images shape:", images.shape)
     images = images / 255.0  # Normalizar imágenes
 
@@ -65,6 +65,7 @@ def main():
     
     r2 = r2_score(y_test, y_pred)
     print("R2 score:", r2)
+    model.save("training_model_0.h5")
     
 if __name__ == "__main__":
     main()
