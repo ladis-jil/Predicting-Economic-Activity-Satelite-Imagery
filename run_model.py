@@ -35,7 +35,7 @@ def main():
     images = np.load("preprocessed_images.npy")
     print("Loaded images shape:", images.shape)
     images = images / 255.0  # Normalizar imágenes
-    
+
     df = pd.read_csv('../raw_data/images_without_transparency.csv')
     y = df["cons_pc"].values
     
