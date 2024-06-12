@@ -48,7 +48,7 @@ def main():
     df = pd.read_csv('../download_preprocess/img_info.csv', index_col=0)
     
     df = df[0:4495]
-    y = df["nightlights"]
+    y = df["cons_pc"]
     X_train = images[0:3596]
     y_train = y[0:3596]
     X_test = images[3596:]

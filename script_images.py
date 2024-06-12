@@ -120,11 +120,11 @@ def main():
 
     client = PlanetDownloader(PLANET_API_KEY)
     
-    with h5py.File('image_matrix.hdf5', 'w') as f:
+    # with h5py.File('image_matrix.hdf5', 'w') as f:
     # Inicializar el dataset dentro del archivo HDF5
     # Asumimos un máximo estimado de imágenes; ajusta según sea necesario
     max_images = len(df_download)
-    images_dset = f.create_dataset('images', (max_images, img_height, img_width, channels), dtype='uint8')
+
     error_index = []
 
     print(f"Ready for download {max_images} images")
@@ -145,8 +145,6 @@ def main():
             print(f"error at index {i}, pass: {str(e)}")
 
     # Si no todas las imágenes son válidas, puedes redimensionar el dataset para que solo tenga las imágenes válidas
-    if count < max_images:
-        images_dset.resize((count, img_height, img_width, channels))
 
     # Guardar índices de error si hay algunos
     if error_index:

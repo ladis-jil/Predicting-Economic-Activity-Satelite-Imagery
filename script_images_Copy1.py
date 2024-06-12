@@ -64,7 +64,6 @@ def process_nigeria():
     # purchasing power parity for nigeria in 2015 (https://data.worldbank.org/indicator/PA.NUS.PRVT.PP?locations=NG)
     ppp = 95.255
 
-
     df = cons_nig_data
     df['cons_ph'] = df[consumption_pc_col] * df[hhsize_col]
     df['pph'] = df[hhsize_col]
@@ -178,7 +177,6 @@ def create_space(lat, lon, s=10):
     v = (180/math.pi)*(500/6378137)*s # roughly 0.045 for s=10
     return lat - v, lon - v, lat + v, lon + v
 
-
 def open_tif_image():
     url_image = "raw_data/picture.tif"
     with rasterio.open(url_image) as src:
@@ -186,7 +184,6 @@ def open_tif_image():
         transform = src.transform
         tif_array = np.squeeze(image_data)
         return transform, tif_array
-
 
 
 def custom_rasterio_open(max_lon, max_lat, transform):
