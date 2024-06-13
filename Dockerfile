@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y libhdf5-dev
 RUN pip install --no-binary h5py h5py
 RUN pip install -r requirements.txt
 
-CMD uvicorn satellite.api.lib:app --host 0.0.0.0
+CMD uvicorn satellite.api.lib:app --host 0.0.0.0 --port $PORT
